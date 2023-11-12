@@ -1,22 +1,43 @@
 const express = require('express');
-// const { ApolloServer } = require('@apollo/server');
-// const { expressMiddleware } = require('@apollo/server/express4');
-// const cors = require('cors');
-// const dotenv = require('dotenv');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
+const path = require('path');
 
-// const db = require('./config/connection');
-// const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+const { typeDefs, resolvers } = require('./schemas');
 
-const app = express();
 const PORT = process.env.PORT || 24582;
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-// Route for /incoming
-app.use('/incoming', require('./routes/incoming'));
-
-// start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const app = express();
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
+
+const startApolloServer = async () => {
+  await server.start();
+
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+  }
+
+  app.use('/graphql', expressMiddleware(server));
+
+  // Route for incoming emails
+  app.use('/incoming', require('./routes/incoming'));
+
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
+  });
+}
+
+startApolloServer();

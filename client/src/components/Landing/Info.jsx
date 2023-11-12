@@ -56,7 +56,11 @@ const Info = () => {
       <Card
         title="Pre-emptive protection against data breaches"
         descriptions={[
-          "Prevent common attacks including credential stuffing and password spraying.",
+          <span>Prevent common attacks including
+            <span className="text-theme-blue-200"> credential stuffing </span>
+            and
+            <span className="text-theme-blue-200"> password spraying.</span>
+          </span>,
           "Easily dispose of compromised email addresses, and identify which sites have been breached.",
         ]}
         image="placeholder.jpg"
