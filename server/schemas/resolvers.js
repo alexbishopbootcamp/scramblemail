@@ -43,7 +43,7 @@ const resolvers = {
           sameSite: 'strict'
         });
 
-        return { success: true, message: 'User logged in', accesstoken, refreshtoken };
+        return { success: true, message: 'User logged in', accesstoken };
       } catch (err) {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }

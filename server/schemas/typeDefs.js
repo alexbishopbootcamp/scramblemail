@@ -23,7 +23,6 @@ const typeDefs = `
     success: Boolean
     message: String
     accesstoken: String
-    refreshtoken: String
   }
 `;
 
