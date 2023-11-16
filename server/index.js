@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
+require('dotenv').config();
 
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
@@ -11,8 +12,25 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-});
+  context: async ({ req }) => {
+    let currentUser = null;
+    const token = req.headers.authorization || '';
 
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        currentUser = await User.findById(decoded.userId);
+      } catch (error) {
+        console.error('Error verifying token:', error);
+      }
+    }
+
+    return {
+      User,
+      currentUser,
+    };
+  },
+});
 const startApolloServer = async () => {
   await server.start();
 

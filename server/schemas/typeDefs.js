@@ -1,26 +1,29 @@
 const typeDefs = `
-  type User {
-    id: ID!
-    username: String!
-    primaryEmail: String!
-    randomEmails: [RandomEmail!]!
-  }
-
-  type RandomEmail {
-    id: ID!
-    email: String!
-    createdAt: String!
-    domain: String
-  }
-
   type Query {
-    randomEmails(userId: ID!): [RandomEmail!]!
+    placeholder: Boolean
   }
 
   type Mutation {
-    createUser(username: String!, primaryEmail: String!): User
-    generateRandomEmail(userId: ID!): RandomEmail
-    deleteRandomEmail(emailId: ID!): Boolean
+    registerUser(primaryEmail: String!, password: String!): AuthPayload
+    verifyEmail(token: String!): VerifyPayload
+    loginUser(primaryEmail: String!, password: String!): LoginPayload
+  }
+
+  type VerifyPayload {
+    success: Boolean
+    message: String
+  }
+
+  type AuthPayload {
+    success: Boolean
+    message: String
+  }
+
+  type LoginPayload {
+    success: Boolean
+    message: String
+    accesstoken: String
+    refreshtoken: String
   }
 `;
 

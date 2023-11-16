@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import TailwindCSS from 'tailwindcss';
 import Autoprefixer from 'autoprefixer';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   css: {
@@ -12,6 +11,17 @@ export default defineConfig({
         TailwindCSS,
         Autoprefixer,
       ]
+    }
+  },
+  server: {
+    port: 3000,
+    open: true,
+    proxy: {
+      '/graphql': {
+        target: 'http://localhost:24582',
+        changeOrigin: true,
+        secure: false,
+      }
     }
   }
 })
