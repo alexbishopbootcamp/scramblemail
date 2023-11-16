@@ -11,26 +11,9 @@ const PORT = process.env.PORT || 24582;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  context: async ({ req }) => {
-    let currentUser = null;
-    const token = req.headers.authorization || '';
-
-    if (token) {
-      try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        currentUser = await User.findById(decoded.userId);
-      } catch (error) {
-        console.error('Error verifying token:', error);
-      }
-    }
-
-    return {
-      User,
-      currentUser,
-    };
-  },
+  resolvers
 });
+
 const startApolloServer = async () => {
   await server.start();
 
@@ -45,7 +28,9 @@ const startApolloServer = async () => {
     });
   }
 
-  app.use('/graphql', expressMiddleware(server));
+  app.use('/graphql', expressMiddleware(server, {
+    context: ({ req, res }) => ({ req, res }),
+  }));
 
   // Route for incoming emails
   app.use('/incoming', require('./routes/incoming'));
