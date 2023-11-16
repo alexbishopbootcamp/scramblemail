@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const JWT = require('jsonwebtoken');
 
 const UserSchema = new Schema({
   primaryEmail: {
@@ -35,10 +36,31 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-// compare the incoming password with the hashed password
-UserSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+UserSchema.statics.findByCredentials = async function (primaryEmail, password) {
+  const user = await this.findOne({ primaryEmail });
+  if (!user) {
+    throw new Error('User not found');
+  }
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    throw new Error('Incorrect password');
+  }
+  return user;
 };
+
+UserSchema.methods.generateToken = function () {
+  const token = JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
+  return token;
+};
+
+UserSchema.methods.generateRefreshToken = function () {
+  const refreshToken = JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: '7d',
+  });
+  return refreshToken;
+}
 
 const User = model('User', UserSchema);
 
