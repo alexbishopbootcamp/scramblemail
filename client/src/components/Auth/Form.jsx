@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER, LOGIN_USER } from '../../graphql/mutations';
+
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Form = ({ type }) => {
   const [primaryEmail, setPrimaryEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = useAuth();
+
   // Apollo mutation hook
-  const [signup, { data: signupData, loading: signupLoading, error: signupError }] = useMutation(REGISTER_USER);
-  const [login, { data: loginData, loading: loginLoading, error: loginError }] = useMutation(LOGIN_USER);
+  const [signupMutation, { data: signupData, loading: signupLoading, error: signupError }] = useMutation(REGISTER_USER);
+  const [loginMutation, { data: loginData, loading: loginLoading, error: loginError }] = useMutation(LOGIN_USER);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (type === 'signup') {
       try {
-        await signup({ variables: { primaryEmail, password } });
+        const { data } = await signupMutation({ variables: { primaryEmail, password } });
         // Handle success (e.g., show message, redirect)
         
       } catch (err) {
@@ -24,11 +28,14 @@ const Form = ({ type }) => {
     }
     if (type === 'login') {
       try {
-        await login({ variables: { primaryEmail, password } });
-        // Handle success (e.g., show message, redirect)
-        
+        const { data } = await loginMutation({ variables: { primaryEmail, password } });
+        console.log("Login Success");
+        login(data.loginUser.accesstoken);
       } catch (err) {
         // Handle error (e.g., show error message)
+        console.log("Login Fail");
+        console.error(err);
+        
       }
     }
   };

@@ -2,6 +2,15 @@ const { User } = require('../models');
 const { ApolloError } = require('apollo-server');
 const { Email } = require('../util/email');
 const JWT = require('jsonwebtoken');
+const {
+  signAccessToken,
+  verifyAccessToken,
+  signRefreshToken,
+  verifyRefreshToken,
+  signEmailConfirmationToken,
+  verifyEmailConfirmationToken
+} = require('../util/auth');
+
 
 const resolvers = {
   Mutation: {
@@ -19,7 +28,7 @@ const resolvers = {
       try {
         // decode token from base64
         token = Buffer.from(token, 'base64').toString('ascii');
-        const data = JWT.verify(token, process.env.JWT_SECRET);
+        const data = verifyEmailConfirmationToken(token);
         // Set user to verified
         await User.findByIdAndUpdate(data._id, { verified: true });
         return { success: true, message: 'Email verified' };
@@ -34,8 +43,9 @@ const resolvers = {
         if (!user) {
           throw new Error('User not found');
         }
-        const accesstoken = user.generateToken();
-        const refreshtoken = user.generateRefreshToken();
+
+        const accesstoken = signAccessToken(user);
+        const refreshtoken = signRefreshToken(user);
 
         context.res.cookie('refreshToken', refreshtoken, {
           httpOnly: true,
