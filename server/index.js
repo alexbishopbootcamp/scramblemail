@@ -7,6 +7,8 @@ require('dotenv').config();
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 
+const { authMiddleware } = require('./util/auth');
+
 const PORT = process.env.PORT || 24582;
 const app = express();
 const server = new ApolloServer({
@@ -28,9 +30,20 @@ const startApolloServer = async () => {
     });
   }
 
+  // Use auth middleware while also passing the request and response objects into the context
   app.use('/graphql', expressMiddleware(server, {
-    context: ({ req, res }) => ({ req, res }),
+    context: ({ req, res }) => {
+      // Pass req through auth middleware
+      const modifiedReq = authMiddleware({ req });
+  
+      // Return both the modified request and the response
+      return {
+        req: modifiedReq,
+        res
+      };
+    }
   }));
+  
 
   // Route for incoming emails
   app.use('/incoming', require('./routes/incoming'));
