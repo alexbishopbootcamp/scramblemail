@@ -17,7 +17,7 @@ const authLinks = [
 const Header = () => {
   return (
     <header className="w-full flex flex-row h-16 items-center justify-between gap-5 px-4">
-      <img src="logo-2.png" width="332" height="37"></img>
+      <img src="/logo-2.png" width="332" height="37"></img>
       <nav>
         <ul className="flex flex-row gap-5 flex-grow">
           {links.map((link, index) => (

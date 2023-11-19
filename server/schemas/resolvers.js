@@ -17,9 +17,10 @@ const resolvers = {
     registerUser: async (_, { primaryEmail, password }, context) => {
       try {
         const user = await User.create({ primaryEmail, password });
+
         // Send verification email
         Email.sendVerification({ user });
-        return { success: true, message: 'User registered' };
+        return { success: true, message: 'A confirmation link has been sent to your email address' };
       } catch (err) {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }
@@ -28,6 +29,7 @@ const resolvers = {
       try {
         // decode token from base64
         token = Buffer.from(token, 'base64').toString('ascii');
+
         const data = verifyEmailConfirmationToken(token);
         // Set user to verified
         await User.findByIdAndUpdate(data._id, { verified: true });

@@ -53,7 +53,7 @@ const Auth = {
   verifyEmailConfirmationToken: function (token) {
     const payload = Auth.verifyToken(token);
 
-    if (payload.type !== 'email_verification') {
+    if (payload.data.type !== 'email_verification') {
       throw new Error('Invalid token type');
     }
 
