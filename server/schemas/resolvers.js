@@ -30,9 +30,9 @@ const resolvers = {
         // decode token from base64
         token = Buffer.from(token, 'base64').toString('ascii');
 
-        const data = verifyEmailConfirmationToken(token);
+        const payload = verifyEmailConfirmationToken(token).data;
         // Set user to verified
-        await User.findByIdAndUpdate(data._id, { verified: true });
+        await User.findByIdAndUpdate(payload._id, { verified: true });
         return { success: true, message: 'Email verified' };
       } catch (error) {
         // Throw an ApolloError
@@ -46,6 +46,10 @@ const resolvers = {
           throw new Error('User not found');
         }
 
+        if (!user.verified) {
+          throw new Error('Please confirm your email address before logging in');
+        }
+
         const accesstoken = signAccessToken(user);
         const refreshtoken = signRefreshToken(user);
 
@@ -55,7 +59,7 @@ const resolvers = {
           sameSite: 'strict'
         });
 
-        return { success: true, message: 'User logged in', accesstoken };
+        return { success: true, message: 'Logged in successfully', accesstoken };
       } catch (err) {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }

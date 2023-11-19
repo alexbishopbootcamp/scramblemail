@@ -39,6 +39,7 @@ const Form = ({ type }) => {
           navigate('/dashboard', { replace: true });
         }, 1000);
       } catch (err) {
+        setMessage('');
         setError(err.message);
       }
     }
