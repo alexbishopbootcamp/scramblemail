@@ -3,8 +3,7 @@ import { useMutation } from '@apollo/client';
 import { REGISTER_USER, LOGIN_USER } from '../../graphql/mutations';
 
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import { set } from 'mongoose';
+import Auth from '../../utils/auth';
 
 const Form = ({ type }) => {
   const [primaryEmail, setPrimaryEmail] = useState('');
@@ -13,7 +12,6 @@ const Form = ({ type }) => {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   // Apollo mutation hook
   const [signupMutation, { data: signupData, loading: signupLoading, error: signupError }] = useMutation(REGISTER_USER);
@@ -33,7 +31,7 @@ const Form = ({ type }) => {
     if (type === 'login') {
       try {
         const { data } = await loginMutation({ variables: { primaryEmail, password } });
-        login(data.loginUser.accesstoken);
+        Auth.setAccessToken(data.loginUser.accesstoken);
         setMessage(data.loginUser.message);
         setTimeout(() => {
           navigate('/dashboard', { replace: true });

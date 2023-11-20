@@ -44,7 +44,7 @@ const Auth = {
   verifyRefreshToken: function (token) {
     const payload = Auth.verifyToken(token);
 
-    if (payload.type !== 'refresh') {
+    if (payload.data.type !== 'refresh') {
       throw new Error('Invalid token type');
     }
 
@@ -76,15 +76,12 @@ const Auth = {
 
     // if no token, return request object as is
     if (!token) {
-      console.log("No header found, returning as-is")
       return req;
     }
 
     try {
       // decode and attach user data to request object
       const { data } = Auth.verifyAccessToken(token);
-      console.log("Decoded token:")
-      console.log(data)
       req.user = data;
     } catch (error) {
       // Catch if wrong token type is used, indicates a security risk

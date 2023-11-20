@@ -15,6 +15,7 @@ const typeDefs = `
     verifyEmail(token: String!): VerifyPayload
     loginUser(primaryEmail: String!, password: String!): LoginPayload
     generateAddress: Address
+    refreshToken: AuthPayload
   }
 
   type VerifyPayload {
@@ -25,6 +26,7 @@ const typeDefs = `
   type AuthPayload {
     success: Boolean
     message: String
+    accesstoken: String
   }
 
   type LoginPayload {

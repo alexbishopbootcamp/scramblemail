@@ -63,8 +63,26 @@ const resolvers = {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }
     },
+    refreshToken: async (_, args, context) => {
+      try {
+        const token = context.req.cookies.refreshToken;
+        if (!token) {
+          throw new Error('No refresh token found');
+        }
+        
+        const payload = verifyRefreshToken(token);
+        const user = await User.findById(payload.data._id);
+        if (!user) {
+          throw new Error('User not found');
+        }
+
+        const accesstoken = signAccessToken(user);
+        return { success: true, message: 'Access token refreshed', accesstoken };
+      } catch (err) {
+        throw new ApolloError(err.message, 'BAD_USER_INPUT');
+      }
+    },
     generateAddress: async (_, args, context) => {
-      console.log("Generating address");
       if(!context.req.user) {
         throw new Error('Not logged in');
       }
@@ -74,21 +92,15 @@ const resolvers = {
       const failsafe = 5;
 
       for(let runs = 0; runs < failsafe; runs++) {
-        console.log(`Attempt ${runs}`);
         try{
           const address = EmailUtils.generate('scramble.email');
-          console.log(`Using email ${address}`)
           const count = await Email.countDocuments({ address });
-          console.log(`Count is ${count}`)
           if(count === 0) {
             const newEmail = new Email({ address });
-            console.log(`Saving email ${address}`)
             const emailId = await newEmail.save();
-            console.log(`Pushing email ${address} to user ${context.req.user._id}`)
             await User.findByIdAndUpdate(context.req.user._id, {
               $push: { emails: emailId }
             });
-            console.log(`Returning email ${address}`)
             return { email: address };
           }
         } catch (err) {
@@ -108,8 +120,16 @@ const resolvers = {
         throw new Error('Not logged in');
       }
       try {
-        const user = await User.findById(context.req.user._id);
-        return user.addresses;
+        const user = await User.findById(context.req.user._id).populate('emails');
+        const emailAddresses = user.emails.map(email => {
+          return {
+            id: email._id,
+            email: email.address,
+            createdAt: email.createdAt,
+            domain: email.domain
+          }
+        });
+        return emailAddresses;
       } catch (err) {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }

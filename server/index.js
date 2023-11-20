@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 require('dotenv').config();
 
@@ -11,6 +12,7 @@ const { authMiddleware } = require('./util/auth');
 
 const PORT = process.env.PORT || 24582;
 const app = express();
+app.use(cookieParser());
 const server = new ApolloServer({
   typeDefs,
   resolvers

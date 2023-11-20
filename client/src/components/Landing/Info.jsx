@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({ title, descriptions, image, flip }) => {
   return (
-    <content className={`flex w-full items-center justify-center text-center
+    <div className={`flex w-full items-center justify-center text-center
                         flex-col md:flex-row
                         ${flip ? 'md:flex-row-reverse' : ''}`}>
       <div className="flex-grow
@@ -26,7 +26,7 @@ const Card = ({ title, descriptions, image, flip }) => {
                       items-center justify-center text-center w-full p-6">
         <img className="w-11/12" src={image}></img>
       </div>
-    </content>
+    </div>
   );
 }
 

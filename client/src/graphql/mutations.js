@@ -35,3 +35,13 @@ export const GENERATE_ADDRESS = gql`
     }
   }
 `;
+
+export const REFRESH_TOKEN = gql`
+  mutation refreshToken {
+    refreshToken {
+      success
+      message
+      accesstoken
+    }
+  }
+`;
