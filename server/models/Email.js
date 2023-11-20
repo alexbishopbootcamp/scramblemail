@@ -8,3 +8,7 @@ const EmailSchema = new Schema({
     match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
   }
 });
+
+const Email = model('Email', EmailSchema);
+
+module.exports = Email;

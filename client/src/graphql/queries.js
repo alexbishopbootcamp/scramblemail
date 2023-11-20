@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const GET_RANDOM_EMAILS = gql`
-  query getRandomEmails {
-    getRandomEmails {
+export const GET_ADDRESSES = gql`
+  query getAddresses {
+    getAddresses {
       id
       email
       createdAt

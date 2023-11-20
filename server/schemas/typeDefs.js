@@ -1,12 +1,20 @@
 const typeDefs = `
   type Query {
-    placeholder: Boolean
+    getAddresses: [Address]
+  }
+
+  type Address {
+    id: ID
+    email: String
+    createdAt: String
+    domain: String
   }
 
   type Mutation {
     registerUser(primaryEmail: String!, password: String!): AuthPayload
     verifyEmail(token: String!): VerifyPayload
     loginUser(primaryEmail: String!, password: String!): LoginPayload
+    generateAddress: Address
   }
 
   type VerifyPayload {

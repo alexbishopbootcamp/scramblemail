@@ -27,3 +27,11 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const GENERATE_ADDRESS = gql`
+  mutation generateAddress {
+    generateAddress {
+      email
+    }
+  }
+`;
