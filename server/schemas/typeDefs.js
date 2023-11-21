@@ -16,6 +16,12 @@ const typeDefs = `
     loginUser(primaryEmail: String!, password: String!): LoginPayload
     generateAddress: Address
     refreshToken: AuthPayload
+    deleteAddress(id: ID!): DeletePayload
+  }
+
+  type DeletePayload {
+    success: Boolean
+    message: String
   }
 
   type VerifyPayload {

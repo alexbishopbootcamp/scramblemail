@@ -113,6 +113,24 @@ const resolvers = {
       console.error('Error generating address:', err);
       throw new Error('Failed to generate unique email address'); // Should only be reached if failsafe triggers
     },
+    deleteAddress: async (_, { id }, context) => {
+      if(!context.req.user) {
+        throw new Error('Not logged in');
+      }
+      try {
+        const email = await Email.findById(id);
+        if(!email) {
+          throw new Error('Email not found');
+        }
+        await Email.findByIdAndDelete(id);
+        await User.findByIdAndUpdate(context.req.user._id, {
+          $pull: { emails: id }
+        });
+        return { success: true, message: 'Email address deleted' };
+      } catch (err) {
+        throw new ApolloError(err.message, 'BAD_USER_INPUT');
+      }
+    },
   },
   Query: {
     getAddresses: async (_, args, context) => {

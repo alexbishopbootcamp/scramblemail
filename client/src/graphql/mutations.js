@@ -45,3 +45,12 @@ export const REFRESH_TOKEN = gql`
     }
   }
 `;
+
+export const DELETE_ADDRESS = gql`
+  mutation deleteAddress($id: ID!) {
+    deleteAddress(id: $id) {
+      success
+      message
+    }
+  }
+`;
