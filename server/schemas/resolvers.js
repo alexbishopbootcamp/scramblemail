@@ -69,7 +69,7 @@ const resolvers = {
         if (!token) {
           throw new Error('No refresh token found');
         }
-        
+
         const payload = verifyRefreshToken(token);
         const user = await User.findById(payload.data._id);
         if (!user) {

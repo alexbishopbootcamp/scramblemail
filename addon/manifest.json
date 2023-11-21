@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "ScrambleMail",
+  "version": "0.1.0",
+  "description": "An email forwarding service that protects against data breaches by randomizing email address",
+  "permissions": ["activeTab", "contextMenus", "storage"],
+  "background": {
+    "service_worker": "scripts/sw.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"]
+    }
+  ]
+}
