@@ -22,15 +22,15 @@ const Navbar = ({ navItems, flip }) => {
       <div className="px-4 py-3 w-full flex justify-between items-center fixed z-10 pointer-events-none">
         <div> {/* spacer */} </div>
         <button className="p-2 pointer-events-auto" onClick={() => setIsOpen(!isOpen)}>
-          <svg className="h-6 w-6" viewBox="0 0 20 20" fill="#000000">
+          <svg className="h-6 w-6" viewBox="0 0 20 20" fill="#ffffff">
             <path fillRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" clipRule="evenodd" />
           </svg>
         </button>
       </div>
       {/* Menu Items */}
-      <div className="relative px-2 pt-2 pb-4 bg-theme-white-600 transition-all" style={style}>
+      <div className="relative px-2 pt-2 pb-4 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 transition-all" style={style}>
         {navItems.map((item) => (
-          <Link key={item.name} to={item.path} className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-600">
+          <Link key={item.name} to={item.path} className="block px-2 py-1 text-white font-semibold rounded hover:text-theme-white-600">
             {item.name}
           </Link>
         ))}
