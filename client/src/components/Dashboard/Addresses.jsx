@@ -23,17 +23,28 @@ const Addresses = () => {
   };
 
   return(
-    <main className="grow">
+    <main className="grow flex flex-col items-center justify-center">
       <button onClick={() => generateAddress()}>Generate Address</button>
       {addressesLoading && <span className="text-md text-theme-blue-400">Loading...</span>}
       {addressesError && <span className="text-md text-theme-blue-400">{addressesError.message}</span>}
-      <div className="flex flex-col text-center gap-3 m-2">
-        {addressesData && addressesData.getAddresses.map((address) => (
-          <AddressCard key={address.id} address={address} handleDelete={handleDelete} />
-        ))}
+      
+      <div className="flex flex-col text-center w-full max-w-sm gap-3 mt-12">
+        {addressesData && addressesData.getAddresses.length > 0 ? (
+          addressesData.getAddresses.map((address) => (
+            <AddressCard key={address.id} address={address} handleDelete={handleDelete} />
+          ))
+        ) : (
+          <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 rounded-lg shadow-md">
+            <h2 className="text-xl text-white font-bold mb-3">No Addresses Yet</h2>
+            <p className="text-md text-white mb-4">Get started by installing our browser extension.</p>
+            <a href="LINK_TO_EXTENSION" className="text-theme-blue-100 underline">Install Extension</a>
+          </div>
+        )}
       </div>
     </main>
   );
+  
+  
 };
 
 export default Addresses;

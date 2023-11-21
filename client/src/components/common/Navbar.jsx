@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = ({ navItems, flip }) => {
+const Navbar = ({ navItems, flip }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navbarRef = useRef(null);
   const [style, setStyle] = useState({});
@@ -28,7 +28,7 @@ const Nav = ({ navItems, flip }) => {
         </button>
       </div>
       {/* Menu Items */}
-      <div className="relative px-2 pt-2 pb-4 bg-theme-white-500 transition-all" style={style}>
+      <div className="relative px-2 pt-2 pb-4 bg-theme-white-600 transition-all" style={style}>
         {navItems.map((item) => (
           <Link key={item.name} to={item.path} className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-600">
             {item.name}
@@ -39,4 +39,4 @@ const Nav = ({ navItems, flip }) => {
   );
 };
 
-export default Nav;
+export default Navbar;

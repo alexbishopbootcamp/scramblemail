@@ -11,6 +11,7 @@ module.exports = {
         'theme-white-300': '#d5dae9',
         'theme-white-400': '#a9adc5',
         'theme-white-500': '#6f728a',
+        'theme-white-600': '#4f5160',
         'theme-blue-100': '#caf2fa',
         'theme-blue-200': '#95c9f9',
         'theme-blue-300': '#205cd6',

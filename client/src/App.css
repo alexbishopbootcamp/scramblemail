@@ -15,7 +15,7 @@
 }
 
 body {
-  @apply bg-theme-white-200;
+  @apply bg-theme-white-100;
   margin: 0;
   place-items: center;
   min-width: 100vw;

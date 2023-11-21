@@ -2,20 +2,18 @@ import React from 'react';
 
 const Card = ({ title, descriptions, image, flip }) => {
   return (
-    <div className={`flex w-full items-center justify-center text-center
-                        flex-col md:flex-row
-                        ${flip ? 'md:flex-row-reverse' : ''}`}>
+    <div className={`flex flex-wrap w-full items-center justify-center text-center
+                    md:flex-nowrap ${flip ? 'md:flex-row-reverse' : 'md:flex-row'} 
+                    my-6 md:my-12`}>
       <div className="flex-grow
                       flex flex-col
-                      items-center text-left justify-center w-full px-10 py-6
-                      ">
-        <h1 className="text-3xl font-bold text-theme-blue-300">
-          <span className="text-theme-blue-300">
-            {title}
-          </span>
+                      items-center text-left justify-center w-full px-6 py-6
+                      md:w-1/2 md:px-10">
+        <h1 className="text-3xl md:text-4xl font-bold text-theme-blue-300 mb-4">
+          {title}
         </h1>
         {descriptions.map((desc, index) => (
-          <p key={index} className="text-2xl text-theme-blue-300 py-4">
+          <p key={index} className="text-lg md:text-xl text-theme-blue-300 py-2 md:py-4">
             {desc}
           </p>
         ))}
@@ -23,12 +21,13 @@ const Card = ({ title, descriptions, image, flip }) => {
 
       <div className="flex-grow
                       flex
-                      items-center justify-center text-center w-full p-6">
-        <img className="w-11/12" src={image}></img>
+                      items-center justify-center text-center w-full p-6
+                      md:w-1/2">
+        <img className="w-full max-w-md" src={image} alt={title} />
       </div>
     </div>
   );
-}
+};
 
 
 const Info = () => {
