@@ -6,7 +6,7 @@ import UserProfile from '../components/Dashboard/UserProfile';
 
 
 const navItems = [
-  { name: 'Dashboard', path: '/dashboard' },
+  //{ name: 'Dashboard', path: '/dashboard' },
   { name: 'Addresses', path: '/dashboard/addresses' },
   { name: 'Profile', path: '/dashboard/profile' },
   { name: 'Settings', path: '/dashboard/settings' },
@@ -21,7 +21,7 @@ const Dashboard = () => {
       <Nav navItems={navItems} flip={true} />
 
         <Routes>
-          {/* <Route index element={<DashboardHome />} /> */}
+          <Route index element={<Addresses />} />
           <Route path="/addresses" element={<Addresses />} />
           <Route path="/profile" element={<UserProfile />} />
           {/* <Route path="/settings" element={<Settings />} /> */}
