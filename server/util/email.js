@@ -26,7 +26,7 @@ const Email = {
   sendVerification: async function ({ user }) {
     const token = signEmailConfirmationToken(user);
     const base64token = Buffer.from(token).toString('base64');
-    const verificationLink = `http://localhost:3000/verify/${base64token}`;
+    const verificationLink = `https://scramble.email/verify/${base64token}`;
   
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; text-align: center; color: white; background: linear-gradient(to right, #3BAFDA, #2B8DD9); border-radius: 10px; padding: 20px; max-width: 600px; margin: auto;">
