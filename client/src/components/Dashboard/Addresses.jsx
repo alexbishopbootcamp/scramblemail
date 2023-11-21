@@ -24,7 +24,7 @@ const Addresses = () => {
 
   return(
     <main className="grow flex flex-col items-center justify-center">
-      <button onClick={() => generateAddress()}>Generate Address</button>
+      {/* <button onClick={() => generateAddress()}>Generate Address</button> */}
       {addressesLoading && <span className="text-md text-theme-blue-400">Loading...</span>}
       {addressesError && <span className="text-md text-theme-blue-400">{addressesError.message}</span>}
       
