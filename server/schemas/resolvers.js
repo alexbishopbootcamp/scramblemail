@@ -132,6 +132,9 @@ const resolvers = {
       }
     },
   },
+  // updatePrimaryAddress: async (_, { primaryEmail }, context) => {},
+  // changePassword: async (_, { password }, context) => {},
+  // deleteAccount: async (_, args, context) => {},
   Query: {
     getAddresses: async (_, args, context) => {
       if(!context.req.user) {
@@ -152,6 +155,18 @@ const resolvers = {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }
     },
+    getProfile: async (_, args, context) => {
+      if(!context.req.user) {
+        throw new Error('Not logged in');
+      }
+
+      try {
+        const user = await User.findById(context.req.user._id)
+        return { primaryEmail: user.primaryEmail };
+      } catch (err) {
+        throw new ApolloError(err.message, 'BAD_USER_INPUT');
+      }
+    }
   }
 
 };

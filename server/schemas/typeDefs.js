@@ -1,6 +1,11 @@
 const typeDefs = `
   type Query {
     getAddresses: [Address]
+    getProfile: Profile
+  }
+
+  type Profile {
+    primaryEmail: String
   }
 
   type Address {
@@ -12,22 +17,16 @@ const typeDefs = `
 
   type Mutation {
     registerUser(primaryEmail: String!, password: String!): AuthPayload
-    verifyEmail(token: String!): VerifyPayload
-    loginUser(primaryEmail: String!, password: String!): LoginPayload
+    verifyEmail(token: String!): GenericPayload
+    loginUser(primaryEmail: String!, password: String!): AuthPayload
     generateAddress: Address
     refreshToken: AuthPayload
-    deleteAddress(id: ID!): DeletePayload
+    deleteAddress(id: ID!): GenericPayload
+    updatePrimaryAddress(primaryEmail: String!): GenericPayload
+    changePassword(password: String!): GenericPayload
+    deleteAccount: GenericPayload
   }
 
-  type DeletePayload {
-    success: Boolean
-    message: String
-  }
-
-  type VerifyPayload {
-    success: Boolean
-    message: String
-  }
 
   type AuthPayload {
     success: Boolean
@@ -35,10 +34,9 @@ const typeDefs = `
     accesstoken: String
   }
 
-  type LoginPayload {
+  type GenericPayload {
     success: Boolean
     message: String
-    accesstoken: String
   }
 `;
 

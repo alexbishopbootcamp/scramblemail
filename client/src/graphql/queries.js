@@ -10,3 +10,11 @@ export const GET_ADDRESSES = gql`
     }
   }
 `;
+
+export const GET_PROFILE = gql`
+  query getProfile {
+    getProfile {
+      primaryEmail
+    }
+  }
+`;

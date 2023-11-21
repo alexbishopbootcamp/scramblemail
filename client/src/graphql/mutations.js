@@ -54,3 +54,30 @@ export const DELETE_ADDRESS = gql`
     }
   }
 `;
+
+export const UPDATE_PRIMARY_ADDRESS = gql`
+  mutation updatePrimaryAddress($primaryEmail: String!) {
+    updatePrimaryAddress(primaryEmail: $primaryEmail) {
+      success
+      message
+    }
+  }
+`;
+
+export const CHANGE_PASSWORD = gql`
+  mutation changePassword($password: String!) {
+    changePassword(password: $password) {
+      success
+      message
+    }
+  }
+`;
+
+export const DELETE_ACCOUNT = gql`
+  mutation deleteAccount {
+    deleteAccount {
+      success
+      message
+    }
+  }
+`;

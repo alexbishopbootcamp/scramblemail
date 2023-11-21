@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from '../components/common/Nav';
 import Addresses from '../components/Dashboard/Addresses';
+import UserProfile from '../components/Dashboard/UserProfile';
 
 
 const navItems = [
@@ -22,8 +23,8 @@ const Dashboard = () => {
         <Routes>
           {/* <Route index element={<DashboardHome />} /> */}
           <Route path="/addresses" element={<Addresses />} />
-          {/* <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} /> */}
+          <Route path="/profile" element={<UserProfile />} />
+          {/* <Route path="/settings" element={<Settings />} /> */}
 
         </Routes>
 
