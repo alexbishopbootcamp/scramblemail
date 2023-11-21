@@ -1,4 +1,4 @@
-const GRAPHQL_URL = 'http://localhost:24582/graphql';
+const GRAPHQL_URL = 'https://scramble.email/graphql';
 
 // Authentication
 const Auth = {
