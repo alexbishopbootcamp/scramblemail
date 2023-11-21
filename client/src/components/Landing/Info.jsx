@@ -39,7 +39,7 @@ const Info = () => {
           "Sign up on every site with a random email address, unique to that site.",
           "Prevent your identity from being correlated across the internet.",
         ]}
-        image="placeholder.jpg"
+        image="identity.jpg"
       />
 
       <Card
@@ -48,7 +48,7 @@ const Info = () => {
           "Automatically fills in randomized email addresses on any website for you.",
           "Our browser extension makes it as easy as clicking a button.",
         ]}
-        image="placeholder.jpg"
+        image="cyber.jpg"
         flip={true}
       />
 
@@ -62,7 +62,7 @@ const Info = () => {
           </span>,
           "Easily dispose of compromised email addresses, and identify which sites have been breached.",
         ]}
-        image="placeholder.jpg"
+        image="breach.jpg"
       />
 
     </>
