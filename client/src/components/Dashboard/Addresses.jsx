@@ -34,7 +34,7 @@ const Addresses = () => {
             <AddressCard key={address.id} address={address} handleDelete={handleDelete} />
           ))
         ) : (
-          <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 rounded-lg shadow-md">
+          <div className="flex flex-col items-center justify-center p-6 bg-azure rounded-lg shadow-md">
             <h2 className="text-xl text-white font-bold mb-3">No Addresses Yet</h2>
             <p className="text-md text-white mb-4">Get started by installing our browser extension.</p>
             <a href="LINK_TO_EXTENSION" className="text-theme-blue-100 underline">Install Extension</a>

@@ -19,18 +19,18 @@ const UserProfile = () => {
   return (
     <main className="grow p-4">
 
-      <div className="flex flex-col w-full p-4 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 rounded-lg mb-4">
+      <div className="flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
         <div className="flex justify-between items-center">
           <span className="text-md text-white font-bold">{profile?.primaryEmail}</span>
           <button className="text-md text-white font-bold">Edit</button>
         </div>
       </div>
 
-      <div className="flex flex-col w-full p-4 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 rounded-lg mb-4">
+      <div className="flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
         <button className="text-md text-white font-bold">Change Password</button>
       </div>
 
-      <div className="flex flex-col w-full p-4 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 rounded-lg">
+      <div className="flex flex-col w-full p-4 bg-azure rounded-lg">
         <button className="text-md text-white font-bold">Delete Account</button>
       </div>
     </main>

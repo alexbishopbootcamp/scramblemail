@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// Was originally planning to re-use the navbar for desktop and mobile views, but couldn't make it work well
+
 const Navbar = ({ navItems, flip }) => {
   const [isOpen, setIsOpen] = useState(true);
   const navbarRef = useRef(null);
@@ -30,7 +32,7 @@ const Navbar = ({ navItems, flip }) => {
         </button>
       </div>
       {/* Menu Items */}
-      <div className="relative px-2 pt-2 pb-4 bg-gradient-to-r from-theme-blue-200 to-theme-blue-300 transition-all" style={style}>
+      <div className="relative px-2 pt-2 pb-4 bg-azure transition-all" style={style}>
         {navItems.map((item) => (
           <Link key={item.name} to={item.path} className="block px-2 py-1 text-white font-semibold rounded hover:text-theme-white-600">
             {item.name}

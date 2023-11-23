@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Nav from '../components/common/Navbar';
+import Nav from '../components/Dashboard/Navbar';
+import Side from '../components/Dashboard/Sidebar';
 import Addresses from '../components/Dashboard/Addresses';
 import UserProfile from '../components/Dashboard/UserProfile';
 
@@ -17,11 +18,15 @@ const Dashboard = () => {
 
   
   return (
-    <div className="flex flex-row max-h-screen overflow-scroll grow w-full h-full">
+    <div className="flex flex-row lg:flex-row max-h-screen overflow-scroll grow w-full h-full">
 
-      <div>
+      <div className="lg:hidden">
         <Nav navItems={navItems} flip={true} />
       </div>
+      <div className="lg:block hidden">
+        <Side navItems={navItems} />
+      </div>
+      
         <div className="w-full">
           <Routes>
             <Route index element={<Addresses />} />

@@ -35,6 +35,9 @@ module.exports = {
         'glow-green-200': '0 0 1px #8dd9de',
         'glow-green-300': '0 0 1px #4ca3bf',
       },
+      backgroundImage: {
+        'azure': 'linear-gradient(to right, #95c9f9, #205cd6)',
+      },
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],
       },
