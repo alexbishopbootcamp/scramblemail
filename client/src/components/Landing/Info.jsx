@@ -9,11 +9,11 @@ const Card = ({ title, descriptions, image, flip }) => {
                       flex flex-col
                       items-center text-left justify-center w-full px-6 py-6
                       md:w-1/2 md:px-10">
-        <h1 className="text-3xl 2xl:text-5xl md:text-4xl font-bold text-theme-blue-300 mb-4">
+        <h1 className="text-3xl 2xl:text-4xl md:text-4xl font-bold text-theme-blue-300 mb-4">
           {title}
         </h1>
         {descriptions.map((desc, index) => (
-          <p key={index} className="text-lg 2xl:text-3xl text-theme-blue-300 py-2 md:py-4">
+          <p key={index} className="text-lg 2xl:text-2xl text-theme-blue-300 py-2 md:py-4">
             {desc}
           </p>
         ))}
