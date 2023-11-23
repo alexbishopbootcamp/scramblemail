@@ -14,7 +14,7 @@ const authLinks = [
 
 const Header = () => {
   return (
-    <header className="w-full flex items-center justify-between h-16 px-4">
+    <header className="w-full flex items-center justify-between h-16 px-4 shadow-md z-10">
       <img src="/logo-2.png" alt="Logo" className="w-32 md:w-52" />
 
       <nav className="flex-grow hidden md:block">
