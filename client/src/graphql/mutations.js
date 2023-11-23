@@ -81,3 +81,12 @@ export const DELETE_ACCOUNT = gql`
     }
   }
 `;
+
+export const LOGOUT_USER = gql`
+  mutation logoutUser {
+    logoutUser {
+      success
+      message
+    }
+  }
+`;

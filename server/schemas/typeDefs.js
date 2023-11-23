@@ -25,6 +25,7 @@ const typeDefs = `
     updatePrimaryAddress(primaryEmail: String!): GenericPayload
     changePassword(password: String!): GenericPayload
     deleteAccount: GenericPayload
+    logoutUser: GenericPayload
   }
 
 

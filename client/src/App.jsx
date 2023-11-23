@@ -7,6 +7,7 @@ import Landing from './pages/Landing';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import VerifyEmail from './pages/VerifyEmail';
+import Logout from './pages/Logout';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<Auth />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/verify/:token" element={<VerifyEmail />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </Router>
     </ApolloProvider>

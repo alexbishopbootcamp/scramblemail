@@ -1,6 +1,6 @@
 import { jwtDecode } from 'jwt-decode';
 import { client } from '../utils/apolloClient';
-import { REFRESH_TOKEN } from '../graphql/mutations';
+import { REFRESH_TOKEN, LOGOUT_USER } from '../graphql/mutations';
 
 const Auth = {
   // get token from local storage
@@ -15,6 +15,7 @@ const Auth = {
   removeAccessToken: function () {
     localStorage.removeItem('accessToken');
   },
+  // Remove 
   // decode token
   decodeToken: function (token) {
     return jwtDecode(token);
@@ -47,6 +48,18 @@ const Auth = {
     } catch (error) {
       console.error(error);
     }
+  },
+  // logout user
+  logout: function () {
+    Auth.removeAccessToken();
+    client.mutate({
+      mutation: LOGOUT_USER,
+      context: {
+        headers: {
+          "X-Skip-Auth": true // Skip auth to prevent loop
+        }
+      }
+    });
   }
 };
 

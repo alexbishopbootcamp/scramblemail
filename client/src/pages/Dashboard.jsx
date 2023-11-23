@@ -5,6 +5,7 @@ import Side from '../components/Dashboard/Sidebar';
 import Addresses from '../components/Dashboard/Addresses';
 import UserProfile from '../components/Dashboard/UserProfile';
 import Header from '../components/common/Header';
+import Auth from '../utils/auth'
 
 
 const navItems = [
@@ -12,7 +13,6 @@ const navItems = [
   { name: 'Addresses', path: '/dashboard/addresses' },
   { name: 'Profile', path: '/dashboard/profile' },
   { name: 'Settings', path: '/dashboard/settings' },
-  { name: 'Logout', path: '/logout' },
 ];
 
 const Dashboard = () => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
   return (
     <>
     <Header />
-      <div className="flex flex-row lg:flex-row max-h-screen overflow-scroll grow">
+      <div className="flex flex-row lg:flex-row grow">
 
         {/* TODO: Clean this up, combine into one component */}
         <div className="lg:hidden">
@@ -30,8 +30,9 @@ const Dashboard = () => {
         <div className="lg:block hidden">
           <Side navItems={navItems} />
         </div>
+        {/* ----------------------------------------------- */}
         
-        <div className="w-full">
+        <div className="w-full mt-12">
           <Routes>
             <Route index element={<Addresses />} />
             <Route path="/addresses" element={<Addresses />} />

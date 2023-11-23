@@ -34,7 +34,9 @@ const Navbar = ({ navItems, flip }) => {
       {/* Menu Items */}
       <div className="relative px-2 pt-2 pb-4 bg-azure transition-all" style={style}>
         {navItems.map((item) => (
-          <Link key={item.name} to={item.path} className="block px-2 py-1 text-white font-semibold rounded hover:text-theme-white-600">
+          <Link key={item.name} to={item.path} 
+            className="block px-2 py-1 text-white font-semibold rounded hover:text-theme-white-600"
+            onClick={() => { item.action?.(); }}>
             {item.name}
           </Link>
         ))}

@@ -17,23 +17,22 @@ const UserProfile = () => {
   const profile = profileData?.getProfile;
 
   return (
-    <main className="grow p-4 max-w-lg m-auto">
-
-      <div className="flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
+    <div className="flex flex-col items-center">
+      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
         <div className="flex justify-between items-center">
           <span className="text-md text-white font-bold">{profile?.primaryEmail}</span>
           <button className="text-md text-white font-bold">Edit</button>
         </div>
       </div>
 
-      <div className="flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
+      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
         <button className="text-md text-white font-bold">Change Password</button>
       </div>
 
-      <div className="flex flex-col w-full p-4 bg-azure rounded-lg">
+      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg">
         <button className="text-md text-white font-bold">Delete Account</button>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -23,12 +23,12 @@ const Addresses = () => {
   };
 
   return(
-    <main className="grow flex flex-col items-center justify-center">
+    <div className="">
       {/* <button onClick={() => generateAddress()}>Generate Address</button> */}
       {addressesLoading && <span className="text-md text-theme-blue-400">Loading...</span>}
       {addressesError && <span className="text-md text-theme-blue-400">{addressesError.message}</span>}
       
-      <div className="flex flex-col text-center w-full max-w-sm gap-3 mt-12">
+      <div className="flex flex-col items-center text-center w-full gap-3">
         {addressesData && addressesData.getAddresses.length > 0 ? (
           addressesData.getAddresses.map((address) => (
             <AddressCard key={address.id} address={address} handleDelete={handleDelete} />
@@ -41,7 +41,7 @@ const Addresses = () => {
           </div>
         )}
       </div>
-    </main>
+    </div>
   );
   
   

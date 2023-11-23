@@ -63,6 +63,15 @@ const resolvers = {
         throw new ApolloError(err.message, 'BAD_USER_INPUT');
       }
     },
+    logoutUser: async (_, args, context) => {
+      try {
+        console.log("Logging out user")
+        context.res.clearCookie('refreshToken');
+        return { success: true, message: 'Logged out successfully' };
+      } catch (err) {
+        throw new ApolloError(err.message, 'BAD_USER_INPUT');
+      }
+    },
     refreshToken: async (_, args, context) => {
       try {
         const token = context.req.cookies.refreshToken;
