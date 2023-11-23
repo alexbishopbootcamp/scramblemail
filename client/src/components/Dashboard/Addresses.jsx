@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ADDRESSES } from '../../graphql/queries';
 import { GENERATE_ADDRESS, DELETE_ADDRESS } from '../../graphql/mutations';
 import AddressCard from './AddressCard';
+import Auth from '../../utils/auth';
 
 const Addresses = () => {
   const { loading: addressesLoading, error: addressesError, data: addressesData, refetch } = useQuery(GET_ADDRESSES);
@@ -33,7 +34,7 @@ const Addresses = () => {
           addressesData.getAddresses.map((address) => (
             <AddressCard key={address.id} address={address} handleDelete={handleDelete} />
           ))
-        ) : (
+        ) :  (
           <div className="flex flex-col items-center justify-center p-6 bg-azure rounded-lg shadow-md">
             <h2 className="text-xl text-white font-bold mb-3">No Addresses Yet</h2>
             <p className="text-md text-white mb-4">Get started by installing our browser extension.</p>
