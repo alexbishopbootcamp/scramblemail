@@ -31,7 +31,7 @@ The unpacked extension is located in the ```addon``` directory.
 
 ### Additional requirements
 
-This project requires a mongoDB database for operation. This can be configured in ```server/config/connection.js```.
+This project requires a mongoDB database for operation, and uses [CloudMailIn](https://www.cloudmailin.com/) for email services.
 
 ## Usage
 
