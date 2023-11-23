@@ -15,7 +15,6 @@ const Splash = () => {
           </h1>
         </div>
       </div>
-      {/* <img className="rounded-full w-64 absolute" src="secure-identity-2.jpg"></img> */}
     </div>
   );
 };

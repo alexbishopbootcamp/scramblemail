@@ -17,6 +17,7 @@ const authLink = setContext(async (_, { headers }) => {
     token = Auth.getAccessToken(); // Get the new token
   }
 
+  // Automatically attach the token to the authorization header
   return {
     headers: {
       ...headers,

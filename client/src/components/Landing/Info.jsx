@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Each stripe of the landing page. Flip param horizontally flips the image and text.
 const Card = ({ title, descriptions, image, flip }) => {
   return (
     <div className={`flex flex-wrap w-full items-center justify-center text-center

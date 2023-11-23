@@ -15,7 +15,7 @@ const Auth = {
   removeAccessToken: function () {
     localStorage.removeItem('accessToken');
   },
-  // Remove 
+
   // decode token
   decodeToken: function (token) {
     return jwtDecode(token);

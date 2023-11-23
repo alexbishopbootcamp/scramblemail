@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ navItems }) => {

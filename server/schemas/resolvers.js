@@ -52,6 +52,8 @@ const resolvers = {
         const accesstoken = signAccessToken(user);
         const refreshtoken = signRefreshToken(user);
 
+        // Store refresh token as a HTTP only cookie for security.
+        // This will then be used by the extension to refresh the access token.
         context.res.cookie('refreshToken', refreshtoken, {
           httpOnly: true,
           secure: true,
@@ -65,6 +67,7 @@ const resolvers = {
     },
     logoutUser: async (_, args, context) => {
       try {
+        // Only need to clear the refresh token cookie
         context.res.clearCookie('refreshToken');
         return { success: true, message: 'Logged out successfully' };
       } catch (err) {
@@ -95,8 +98,8 @@ const resolvers = {
         throw new Error('Not logged in');
       }
 
-      // Generate new emails and check if they are unique up to failsafe times.
-      // If the failsafe is hit, abort and throw an error to prevent an infinite loop hitting database.
+      // Only attempt generating a unique address a maximum of 5 times
+      // This is to prevent an infinite loop if something unexpected happens
       const failsafe = 5;
 
       for(let runs = 0; runs < failsafe; runs++) {
@@ -140,6 +143,7 @@ const resolvers = {
       }
     },
   },
+  // TODO:
   // updatePrimaryAddress: async (_, { primaryEmail }, context) => {},
   // changePassword: async (_, { password }, context) => {},
   // deleteAccount: async (_, args, context) => {},

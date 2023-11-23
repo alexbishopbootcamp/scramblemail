@@ -48,20 +48,6 @@ UserSchema.statics.findByCredentials = async function (primaryEmail, password) {
   return user;
 };
 
-UserSchema.methods.generateToken = function () {
-  const token = JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
-    expiresIn: '1h',
-  });
-  return token;
-};
-
-UserSchema.methods.generateRefreshToken = function () {
-  const refreshToken = JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
-  });
-  return refreshToken;
-}
-
 const User = model('User', UserSchema);
 
 module.exports = User;

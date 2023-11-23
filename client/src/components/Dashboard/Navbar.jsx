@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Was originally planning to re-use the navbar for desktop and mobile views, but couldn't make it work well
+// Logic is for sliding the navbar in and out of view
 
 const Navbar = ({ navItems, flip }) => {
   const [isOpen, setIsOpen] = useState(true);

@@ -3,6 +3,7 @@ const { signEmailConfirmationToken } = require('./auth');
 require('dotenv').config();
 
 const Email = {
+  // TODO: Clean these arguments up
   send: async function ({ user, from, subject, tags, plain, html, inReplyTo, references }) {
     const client = new MessageClient({
       username: process.env.CLOUDMAILIN_USERNAME,
@@ -23,6 +24,7 @@ const Email = {
 
     await client.sendMessage(message);
   },
+  // Send an email verification link to new users
   sendVerification: async function ({ user }) {
     const token = signEmailConfirmationToken(user);
     const base64token = Buffer.from(token).toString('base64');

@@ -6,6 +6,7 @@ import { GET_PROFILE } from '../../graphql/queries';
 import AddressCard from './AddressCard';
 
 const UserProfile = () => {
+  // Not implemented yet
   const [updatePrimaryAddress, { data: updatePrimaryData, loading: updatePrimaryLoading, error: updatePrimaryError }] = useMutation(UPDATE_PRIMARY_ADDRESS);
   const [changePassword, { data: changePasswordData, loading: changePasswordLoading, error: changePasswordError }] = useMutation(CHANGE_PASSWORD);
   const [deleteAccount, { data: deleteAccountData, loading: deleteAccountLoading, error: deleteAccountError }] = useMutation(DELETE_ACCOUNT);

@@ -17,6 +17,8 @@ const Form = ({ type }) => {
   const [signupMutation, { data: signupData, loading: signupLoading, error: signupError }] = useMutation(REGISTER_USER);
   const [loginMutation, { data: loginData, loading: loginLoading, error: loginError }] = useMutation(LOGIN_USER);
 
+
+  // Both signup and login are handled with the one form
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (type === 'signup') {

@@ -7,7 +7,7 @@ const refreshTokenDuration = '7d';
 const emailConfirmationTokenDuration = '15m';
 
 const Auth = {
-  // Tokens. Use unique functions for each to ensure seperation.
+  // Tokens. Use unique functions for each to ensure seperation. Users swapping tokens with eachother would be bad.
   signAccessToken: function ({ primaryEmail, _id }) {
     const payload = { primaryEmail, _id, type: 'access' };
 
@@ -74,7 +74,6 @@ const Auth = {
         .trim();
     }
 
-    // if no token, return request object as is
     if (!token) {
       return req;
     }
@@ -90,7 +89,6 @@ const Auth = {
       }
     }
 
-    // return updated request object
     return req;
   },
   AuthenticationError: new GraphQLError('Could not authenticate user.', {

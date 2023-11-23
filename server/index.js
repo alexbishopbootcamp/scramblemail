@@ -17,6 +17,8 @@ const { authMiddleware } = require('./util/auth');
 
 const PORT = process.env.PORT || 24582;
 const app = express();
+
+// Security middleware
 app.use(cookieParser());
 app.use(helmet());
 app.use(cors({

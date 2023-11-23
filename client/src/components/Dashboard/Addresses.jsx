@@ -18,13 +18,14 @@ const Addresses = () => {
         refetch();
       })
       .catch(error => {
-        // Handle any errors
+        // TODO: Handle any errors
         console.error('Error deleting address:', error);
       });
   };
 
   return(
     <div className="">
+      {/* For generating addresses from the webpage. I may re-introduce this feature later. */}
       {/* <button onClick={() => generateAddress()}>Generate Address</button> */}
       {addressesLoading && <span className="text-md text-theme-blue-400">Loading...</span>}
       {addressesError && <span className="text-md text-theme-blue-400">{addressesError.message}</span>}

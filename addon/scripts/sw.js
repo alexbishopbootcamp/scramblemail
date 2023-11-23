@@ -1,5 +1,7 @@
 const GRAPHQL_URL = 'https://scramble.email/graphql';
 
+// TODO: Currently all in the one script. Look into splitting into multiple scripts
+
 // Authentication
 const Auth = {
   getAccessToken: function () {
@@ -11,6 +13,7 @@ const Auth = {
   removeAccessToken: function () {
     Store.remove('accessToken');
   },
+  // TODO: Determine if a library can be used to decode the token
   decodeToken: function(token) {
     try{
       const base64Url = token.split('.')[1];

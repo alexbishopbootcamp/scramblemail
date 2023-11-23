@@ -7,7 +7,7 @@ import UserProfile from '../components/Dashboard/UserProfile';
 import Header from '../components/common/Header';
 import Auth from '../utils/auth'
 
-
+// These are drilled down to the navbar and sidebar components. An "action" can be added to execute JS on click.
 const navItems = [
   //{ name: 'Dashboard', path: '/dashboard' },
   { name: 'Addresses', path: '/dashboard/addresses' },

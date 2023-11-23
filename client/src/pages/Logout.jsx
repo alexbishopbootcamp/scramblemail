@@ -9,6 +9,7 @@ const Logout = () => {
   useEffect(() => {
     Auth.logout();
 
+    // Give the user some time to read the message before redirecting to the home page
     const timer = setTimeout(() => {
       navigate('/'); 
     }, 3500); 
