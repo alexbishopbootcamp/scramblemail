@@ -58,7 +58,7 @@ const Form = ({ type }) => {
              value={password} onChange={(e) => setPassword(e.target.value)} />
       {message && <span className="text-sm text-theme-blue-400">{message}</span>}
       {error && <span className="text-sm text-red-700">{error}</span>}
-      <button className="w-full py-2 px-4 rounded-lg text-white bg-theme-blue-300 hover:bg-theme-blue-400 hover:shadow-lg transition-all duration-50"
+      <button className="w-full py-2 px-4 rounded-lg text-white bg-azure hover:scale-105 hover:shadow-lg transition-all duration-50"
               type="submit" disabled={signupLoading || loginLoading} >
               {signupLoading || loginLoading ? '⏳' : (type === 'signup' ? 'Sign Up' : 'Log In')}
       </button>

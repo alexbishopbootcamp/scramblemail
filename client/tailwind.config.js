@@ -37,6 +37,7 @@ module.exports = {
       },
       backgroundImage: {
         'azure': 'linear-gradient(to right, #95c9f9, #205cd6)',
+        'azure-dark': 'linear-gradient(to right, #205cd6, #1b4aa6)',
       },
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],

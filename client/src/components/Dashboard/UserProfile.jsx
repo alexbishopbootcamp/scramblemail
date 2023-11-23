@@ -17,7 +17,7 @@ const UserProfile = () => {
   const profile = profileData?.getProfile;
 
   return (
-    <main className="grow p-4">
+    <main className="grow p-4 max-w-lg m-auto">
 
       <div className="flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
         <div className="flex justify-between items-center">

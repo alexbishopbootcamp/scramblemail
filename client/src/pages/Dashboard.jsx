@@ -4,6 +4,7 @@ import Nav from '../components/Dashboard/Navbar';
 import Side from '../components/Dashboard/Sidebar';
 import Addresses from '../components/Dashboard/Addresses';
 import UserProfile from '../components/Dashboard/UserProfile';
+import Header from '../components/common/Header';
 
 
 const navItems = [
@@ -18,25 +19,28 @@ const Dashboard = () => {
 
   
   return (
-    <div className="flex flex-row lg:flex-row max-h-screen overflow-scroll grow w-full h-full">
+    <>
+    <Header />
+      <div className="flex flex-row lg:flex-row max-h-screen overflow-scroll grow">
 
-      <div className="lg:hidden">
-        <Nav navItems={navItems} flip={true} />
-      </div>
-      <div className="lg:block hidden">
-        <Side navItems={navItems} />
-      </div>
-      
+        {/* TODO: Clean this up, combine into one component */}
+        <div className="lg:hidden">
+          <Nav navItems={navItems} flip={true} />
+        </div>
+        <div className="lg:block hidden">
+          <Side navItems={navItems} />
+        </div>
+        
         <div className="w-full">
           <Routes>
             <Route index element={<Addresses />} />
             <Route path="/addresses" element={<Addresses />} />
             <Route path="/profile" element={<UserProfile />} />
-            {/* <Route path="/settings" element={<Settings />} /> */}
-
-        </Routes>
+            <Route path="/settings" element={<UserProfile />} />
+          </Routes>
         </div>
-    </div>
+      </div>
+    </>
   );
 };
 
