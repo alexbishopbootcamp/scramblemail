@@ -65,7 +65,6 @@ const resolvers = {
     },
     logoutUser: async (_, args, context) => {
       try {
-        console.log("Logging out user")
         context.res.clearCookie('refreshToken');
         return { success: true, message: 'Logged out successfully' };
       } catch (err) {
