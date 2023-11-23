@@ -10,15 +10,18 @@ const navItems = [
   { name: 'Addresses', path: '/dashboard/addresses' },
   { name: 'Profile', path: '/dashboard/profile' },
   { name: 'Settings', path: '/dashboard/settings' },
+  { name: 'Logout', path: '/logout' },
 ];
 
 const Dashboard = () => {
 
   
   return (
-    <div className="flex flex-col-reverse max-h-screen overflow-scroll md:flex-row grow w-full h-full">
+    <div className="flex flex-row max-h-screen overflow-scroll grow w-full h-full">
 
-      <Nav navItems={navItems} flip={true} />
+      <div>
+        <Nav navItems={navItems} flip={true} />
+      </div>
         <div className="w-full">
           <Routes>
             <Route index element={<Addresses />} />

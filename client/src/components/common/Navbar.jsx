@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ navItems, flip }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const navbarRef = useRef(null);
   const [style, setStyle] = useState({});
 
@@ -22,9 +22,11 @@ const Navbar = ({ navItems, flip }) => {
       <div className="px-4 py-3 w-full flex justify-between items-center fixed z-10 pointer-events-none">
         <div> {/* spacer */} </div>
         <button className="p-2 pointer-events-auto" onClick={() => setIsOpen(!isOpen)}>
-          <svg className="h-6 w-6" viewBox="0 0 20 20" fill="#000000">
-            <path fillRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" clipRule="evenodd" />
-          </svg>
+          <div className="bg-white p-2 shadow-md rounded-full">
+            <svg className="h-12 w-12" viewBox="0 0 24 24" fill="#000000">
+              <path fillRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" clipRule="evenodd" />
+            </svg>
+          </div>
         </button>
       </div>
       {/* Menu Items */}
