@@ -24,6 +24,15 @@ app.use(cors({
   credentials: true
 }));
 
+// Redirect HTTP to HTTPS
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  } else {
+    next();
+  }
+});
+
 const server = new ApolloServer({
   typeDefs,
   resolvers
