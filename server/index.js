@@ -5,6 +5,11 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 require('dotenv').config();
 
+const helmet = require('helmet');
+const cors = require('cors');
+// TODO: Rate limiting
+
+
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 
@@ -13,6 +18,12 @@ const { authMiddleware } = require('./util/auth');
 const PORT = process.env.PORT || 24582;
 const app = express();
 app.use(cookieParser());
+app.use(helmet());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' ? 'https://scramble.email' : 'http://localhost:3000',
+  credentials: true
+}));
+
 const server = new ApolloServer({
   typeDefs,
   resolvers
