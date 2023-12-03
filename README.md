@@ -1,5 +1,7 @@
 # ScrambleMail
 
+*Please note that this is a student project and continued operation of the service is not guaranteed. Do not use this service for any important accounts.*
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## https://scramble.email
@@ -36,8 +38,6 @@ This project requires a mongoDB database for operation, and uses [CloudMailIn](h
 ## Usage
 
 Visit https://scramble.email/ and sign up. Once you are logged in, you will be able to generate addresses by using the extension.
-
-*Please note that this is a student project and continued operation of the service is not guaranteed. Do not use this service for any important accounts.*
 
 ### Site preview
 
