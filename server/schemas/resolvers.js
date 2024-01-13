@@ -17,9 +17,15 @@ const resolvers = {
       try {
         const user = await User.create({ primaryEmail, password });
 
-        // Send verification email
-        EmailUtils.sendVerification({ user });
-        return { success: true, message: 'A confirmation link has been sent to your email address' };
+        if (process.env.NODE_ENV == 'production') {
+          EmailUtils.sendVerification({ user });
+          return { success: true, message: 'A confirmation link has been sent to your email address' };
+        } else {
+          // Skip email verification in dev mode
+          await User.findByIdAndUpdate(user._id, { verified: true });
+          return { success: true, message: '[Dev mode] Account created and verified' };
+        }
+
       } catch (err) {
         if(err.code == 11000) { // Duplicate key error
           throw new ApolloError('Email address already in use', 'BAD_USER_INPUT');
