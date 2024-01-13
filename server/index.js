@@ -5,6 +5,17 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 require('dotenv').config();
 
+// Check for required environment variables
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET environment variable not set');
+  process.exit(1);
+}
+
+// Check if running in dev mode
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Running in development mode');
+}
+
 const helmet = require('helmet');
 const cors = require('cors');
 // TODO: Rate limiting
