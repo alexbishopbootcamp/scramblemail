@@ -24,7 +24,7 @@ const Card = ({ title, descriptions, image, flip }) => {
                       flex
                       items-center justify-center text-center w-full p-6
                       md:w-1/2">
-        <img className="w-11/12 xl:w-9/12" src={image} alt={title} />
+        <img className="w-11/12 xl:w-9/12 rounded" src={image} alt={title} />
       </div>
     </div>
   );
