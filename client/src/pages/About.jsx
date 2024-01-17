@@ -25,7 +25,7 @@ const Landing = () => {
           <h1 className="font-bold text-theme-blue-300 text-2xl">How It Works</h1>
           <p>ScrambleMail enhances your online security in a few simple steps:</p>
 
-          <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-4">
+          <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-4 pt-4">
             <div class="font-semibold text-theme-blue-300 pr-4">Sign Up and Verification:</div>
             <div>Register with your real email address and confirm it through a verification link sent by ScrambleMail.</div>
 
