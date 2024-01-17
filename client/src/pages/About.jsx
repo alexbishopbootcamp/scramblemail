@@ -25,18 +25,18 @@ const Landing = () => {
           <h1 className="font-bold text-theme-blue-300 text-2xl">How It Works</h1>
           <p>ScrambleMail enhances your online security in a few simple steps:</p>
 
-          <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-4 pt-4">
-            <div class="font-semibold text-theme-blue-300 pr-4">Sign Up and Verification</div>
+          <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-2 md:gap-4 pt-4">
+            <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Sign Up and Verification</div>
             <div>Register with your real email address and confirm it through a verification link sent by ScrambleMail.</div>
 
-            <div class="font-semibold text-theme-blue-300 pr-4">Browser Extension</div>
+            <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Browser Extension</div>
             <div>Install the ScrambleMail browser extension for easy integration with web browsing.</div>
 
-            <div class="font-semibold text-theme-blue-300 pr-4">One-Click Email Generation</div>
+            <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">One-Click Email Generation</div>
             <div>Click the ScrambleMail button in any email field to generate a unique email address.</div>
 
-            <div class="font-semibold text-theme-blue-300 pr-4">Automatic Email Forwarding</div>
-            <div>All done! Emails to ScrambleMail addresses are forwarded to your real inbox, protecting your privacy and reducing spam.</div>
+            <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Automatic Email Forwarding</div>
+            <div>All done! Emails are forwarded to your real inbox, protecting your privacy and reducing spam.</div>
           </div>
         </div>
 
