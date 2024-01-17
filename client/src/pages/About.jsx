@@ -6,8 +6,8 @@ const Landing = () => {
     <div>
       <Header />
       <div className="flex flex-col m-8 gap-16">
-        <h1 className="font-bold text-theme-blue-300 text-center text-3xl">About ScrambleMail</h1>
-        <div className="flex flex-col gap-3">
+        <h1 className="font-bold text-theme-blue-300 text-center text-3xl pt-4">About ScrambleMail</h1>
+        <div className="flex flex-col gap-3 bg-theme-white-200 rounded-xl p-8 shadow-md">
 
           <h1 className="font-bold text-theme-blue-300 text-2xl">What is ScrambleMail?</h1>
           <p>
@@ -21,11 +21,11 @@ const Landing = () => {
         </div>
 
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 bg-theme-white-200 rounded-xl p-8 shadow-md">
           <h1 className="font-bold text-theme-blue-300 text-2xl">How It Works</h1>
           <p>ScrambleMail enhances your online security in a few simple steps:</p>
 
-          <div class="grid grid-cols-[auto,1fr] gap-4">
+          <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-4">
             <div class="font-semibold text-theme-blue-300 pr-4">Sign Up and Verification:</div>
             <div>Register with your real email address and confirm it through a verification link sent by ScrambleMail.</div>
 
@@ -40,7 +40,7 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 bg-theme-white-200 rounded-xl p-8 shadow-md">
           <h1 className="font-bold text-theme-blue-300 text-2xl">Understanding Attacks</h1>
           <p>
           Credential stuffing and password spraying are two common cyber-attack techniques, 
