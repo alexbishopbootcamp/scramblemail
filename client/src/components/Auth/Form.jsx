@@ -54,9 +54,9 @@ const Form = ({ type }) => {
       <h1 className="w-96 text-left text-3xl font-bold text-theme-blue-300">
           {type === 'signup' ? 'Sign Up' : 'Log In'}
       </h1>
-      <input className="w-full h-10 p-1" type="email"     placeholder="Email"    minLength="5" maxLength="50" required
+      <input className="w-full h-10 p-1 rounded" type="email"     placeholder="Email"    minLength="5" maxLength="50" required
              value={primaryEmail} onChange={(e) => setPrimaryEmail(e.target.value)} />
-      <input className="w-full h-10 p-1" type="password"  placeholder="Password" minLength="8" required
+      <input className="w-full h-10 p-1 rounded" type="password"  placeholder="Password" minLength="8" required
              value={password} onChange={(e) => setPassword(e.target.value)} />
       {message && <span className="text-sm text-theme-blue-400">{message}</span>}
       {error && <span className="text-sm text-red-700">{error}</span>}
