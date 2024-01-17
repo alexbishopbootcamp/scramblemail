@@ -8,7 +8,7 @@ const Navbar = ({ navItems }) => {
       <div className="flex flex-col gap-2 w-60 bg-azure h-full p-4">
         {navItems.map((item) => (
           <Link key={item.name} to={item.path}
-            className="block px-2 py-1 text-white text-xl text-right font-bold hover:text-theme-white-600"
+            className="block px-2 py-1 text-white text-xl text-center font-bold hover:text-black"
             onClick={() => { item.action?.(); }}>
             {item.name}
           </Link>
