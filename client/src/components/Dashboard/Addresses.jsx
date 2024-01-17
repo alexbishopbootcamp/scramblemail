@@ -27,8 +27,8 @@ const Addresses = () => {
     <div className="">
       {/* For generating addresses from the webpage. I may re-introduce this feature later. */}
       {/* <button onClick={() => generateAddress()}>Generate Address</button> */}
-      {addressesLoading && <span className="text-md text-theme-blue-400">Loading...</span>}
-      {addressesError && <span className="text-md text-theme-blue-400">{addressesError.message}</span>}
+      {addressesLoading && <span className="text-md text-theme-blue-400 w-full text-center">Loading...</span>}
+      {addressesError && <span className="text-md text-theme-blue-400 w-full text-center">{addressesError.message}</span>}
       
       <div className="flex flex-col items-center text-center w-full gap-3">
         {addressesData && addressesData.getAddresses.length > 0 ? (
