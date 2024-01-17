@@ -4,6 +4,7 @@ import Nav from '../components/Dashboard/Navbar';
 import Side from '../components/Dashboard/Sidebar';
 import Addresses from '../components/Dashboard/Addresses';
 import UserProfile from '../components/Dashboard/UserProfile';
+import Settings from '../components/Dashboard/Settings';
 import Header from '../components/common/Header';
 import Auth from '../utils/auth'
 
@@ -37,7 +38,7 @@ const Dashboard = () => {
             <Route index element={<Addresses />} />
             <Route path="/addresses" element={<Addresses />} />
             <Route path="/profile" element={<UserProfile />} />
-            <Route path="/settings" element={<UserProfile />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
       </div>
