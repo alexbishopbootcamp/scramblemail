@@ -19,21 +19,41 @@ const UserProfile = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
-        <div className="flex justify-between items-center">
-          <span className="text-md text-white font-bold">{profile?.primaryEmail}</span>
-          <button className="text-md text-white font-bold">Edit</button>
+
+<div className="flex flex-col w-10/12 md:w-auto gap-3 bg-theme-white-200 rounded-xl p-8 shadow-md">
+        <h1 className="font-bold  text-theme-blue-300 text-2xl">Profile</h1>
+
+        <div class="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-2 md:gap-4 pt-4">
+          <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Primary Email Address</div>
+          <div>{profile?.primaryEmail}</div>
+
+          <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Generated Addresses</div>
+          <div>0</div>
+
+          <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Proxied Emails</div>
+          <div>0</div>
+
+          <div class="font-semibold text-theme-blue-300 md:pr-4 pt-2 md:p-0">Blocked Emails</div>
+          <div>0</div>
+        </div>
+
+        <div className="flex flex-col mt-20 items-center">
+          <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
+            <button className="text-md text-white font-bold">Change Primary Email Address</button>
+          </div>
+
+          <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
+            <button className="text-md text-white font-bold">Change Password</button>
+          </div>
+
+          <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg">
+            <button className="text-md text-white font-bold">Delete Account</button>
+          </div>
         </div>
       </div>
-
-      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg mb-4">
-        <button className="text-md text-white font-bold">Change Password</button>
-      </div>
-
-      <div className="max-w-md flex flex-col w-full p-4 bg-azure rounded-lg">
-        <button className="text-md text-white font-bold">Delete Account</button>
-      </div>
     </div>
+
+    
   );
 };
 
