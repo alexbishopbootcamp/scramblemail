@@ -12,7 +12,7 @@ const UserProfile = () => {
   const [deleteAccount, { data: deleteAccountData, loading: deleteAccountLoading, error: deleteAccountError }] = useMutation(DELETE_ACCOUNT);
   const { loading: profileLoading, error: profileError, data: profileData } = useQuery(GET_PROFILE);
 
-  if (profileLoading) return <p>Loading profile...</p>;
+  if (profileLoading) return <p className="w-full text-center">Loading profile...</p>;
   if (profileError) return <p>Error loading profile: {profileError.message}</p>;
 
   const profile = profileData?.getProfile;
