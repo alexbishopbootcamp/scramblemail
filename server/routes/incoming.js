@@ -21,8 +21,8 @@ router.post('/', async (req, res) => {
       user: { primaryEmail: redirectAddress },
       from: req.body.headers.from,
       subject: req.body.headers.subject,
-      tags: ['forwarded'],
-      plain: req.body.plain,
+      tags: ['contact'],
+      plain: 'from: ' + req.body.headers.from + '\n' + req.body.plain,
       html: req.body.html,
     });
     return res.status(200).json({ message: 'OK' });
