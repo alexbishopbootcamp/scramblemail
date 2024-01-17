@@ -5,8 +5,8 @@ import Auth from '../../utils/auth'
 // TODO: Add these pages
 const links = [
   { to: '/', text: 'Home' },
-  { to: '/', text: 'About' },
-  { to: '/', text: 'Contact' },
+  { to: '/about', text: 'About' },
+  { to: '/contact', text: 'Contact' },
 ];
 
 const authLinks = [

@@ -57,9 +57,9 @@ const Info = () => {
         title="Pre-emptive protection against data breaches"
         descriptions={[
           <span>Prevent common attacks including
-            <span className="text-theme-blue-200"> credential stuffing </span>
+            <span className="text-theme-blue-200 font-semibold"> credential stuffing </span>
             and
-            <span className="text-theme-blue-200"> password spraying.</span>
+            <span className="text-theme-blue-200 font-semibold"> password spraying.</span>
           </span>,
           "Easily dispose of compromised email addresses, and identify which sites have been breached.",
         ]}
